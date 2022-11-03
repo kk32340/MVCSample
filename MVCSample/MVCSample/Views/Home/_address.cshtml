@@ -1,0 +1,34 @@
+﻿@model List<Address>
+
+
+<table>
+    <tr>
+        <td colspan="2">
+        Address:
+        </td>
+    </tr>
+    
+    <tr>
+        <td>
+            City
+        </td>
+        <td>
+            State
+        </td>
+    </tr>
+   
+    @foreach(Address add in Model){
+        <tr>
+           
+            <td>
+                @add.city
+            </td>
+            <td>
+                @add.state
+            </td>
+           
+        </tr>
+    }
+
+
+</table>

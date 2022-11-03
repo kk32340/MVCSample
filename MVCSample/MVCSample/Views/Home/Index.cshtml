@@ -1,0 +1,95 @@
+﻿@model List<Customer>
+
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+      
+    <div>
+        Customer List
+    </div>
+    <div>
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <td>
+                            Name
+                        </td>
+                        <td>
+                            Phone
+                        </td>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    @foreach (Customer cust in Model)
+                    {
+
+                        <tr>
+                            <td>
+                                <a href="#" onclick="LoadCustomer('@cust.name')">
+                                    @cust.name
+                                </a>                               
+                            </td>
+                            <td>
+                                @cust.phone
+                            </td>
+                        </tr>
+
+                    }
+                </tbody>
+
+            </table>
+    </div>
+
+    
+    
+
+</div>
+
+<div>
+    Customer Entry:
+</div>
+
+    <div id="CustomerEntry">
+
+</div>
+
+
+<script type="text/javascript">
+
+        function LoadCustomer(name){
+
+
+            //var personId = "someId";
+            //$.ajax({
+            //    type: 'GET',
+            //    url: '@Url.Action("LoadPartialView", "Home")',
+            //    dataType: 'html',
+            //    data: ({
+            //        //insert your parameters to pass to controller
+            //        name: name
+            //    }),
+            //    success: function () {
+            //        alert("Successfully posted!");
+            //    }
+            //});
+
+
+            var url = '@Url.Action("LoadPartialView", "Home")';
+
+            $.get(url, { name : name}, function (response) {
+
+               
+
+
+                $("#CustomerEntry").html(response);
+            });
+        }
+
+</script>
+
